@@ -21,3 +21,4 @@ cat = Cat("Whiskers")
 
 print(dog.speak())  # Output: Buddy barks.
 print(cat.speak())  # Output: Whiskers meows.
+
