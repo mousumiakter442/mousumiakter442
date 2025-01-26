@@ -1,1 +1,76 @@
-.
+#include <iostream>
+#include <string>
+
+class LibraryItem {
+protected:
+    std::string title;
+    int publicationYear;
+
+public:
+    LibraryItem(const std::string& _title, int _publicationYear)
+        : title(_title), publicationYear(_publicationYear) {}
+
+    virtual void displayInfo() {
+        std::cout << "Title: " << title << "\nPublication Year: " << publicationYear << "\n";
+    }
+};
+
+class Book : public LibraryItem {
+private:
+    std::string author;
+
+public:
+    Book(const std::string& _title, int _publicationYear, const std::string& _author)
+        : LibraryItem(_title, _publicationYear), author(_author) {}
+
+    void displayInfo() override {
+        LibraryItem::displayInfo();
+        std::cout << "Author: " << author << "\n";
+    }
+};
+
+class Magazine : public LibraryItem {
+private:
+    int issueNumber;
+
+public:
+    Magazine(const std::string& _title, int _publicationYear, int _issueNumber)
+        : LibraryItem(_title, _publicationYear), issueNumber(_issueNumber) {}
+
+    void displayInfo() override {
+        LibraryItem::displayInfo();
+        std::cout << "Issue Number: " << issueNumber << "\n";
+    }
+};
+
+class DVD : public LibraryItem {
+private:
+    std::string director;
+
+public:
+    DVD(const std::string& _title, int _publicationYear, const std::string& _director)
+        : LibraryItem(_title, _publicationYear), director(_director) {}
+
+    void displayInfo() override {
+        LibraryItem::displayInfo();
+        std::cout << "Director: " << director << "\n";
+    }
+};
+
+int main() {
+    LibraryItem* items[3];
+    items[0] = new Book("The Catcher in the Rye", 1951, "J.D. Salinger");
+    items[1] = new Magazine("National Geographic", 1888, 100);
+    items[2] = new DVD("Inception", 2010, "Christopher Nolan");
+
+    for (int i = 0; i < 3; ++i) {
+        items[i]->displayInfo();
+        std::cout << "\n";
+    }
+
+    for (int i = 0; i < 3; ++i) {
+        delete items[i];
+    }
+
+    return 0;
+}
