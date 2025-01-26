@@ -1,0 +1,17 @@
+
+public class Main {
+    public static void main(String[] args) {
+        Person person = new Person("Alice", 25);
+
+        // Accessing private data through getter
+        System.out.println("Name: " + person.getName());
+        System.out.println("Age: " + person.getAge());
+
+        // Modifying private data through setter
+        person.setName("Bob");
+        person.setAge(30);
+
+        System.out.println("Updated Name: " + person.getName());
+        System.out.println("Updated Age: " + person.getAge());
+    }
+}
